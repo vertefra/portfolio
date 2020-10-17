@@ -5,7 +5,6 @@ from setup import Config
 import uvicorn
 import os
 
-
 PORT = Config.getPort(5000)
 print(PORT)
 
@@ -14,6 +13,7 @@ app.include_router(
     controller.router,
     prefix="",
 )
+
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
