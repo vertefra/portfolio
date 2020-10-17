@@ -5,7 +5,7 @@ from setup import views
 import uvicorn
 import os
 
-PORT = os.environ["PORT"]
+PORT = os.environ["PORT"] or 3000
 
 app = FastAPI()
 app.include_router(
