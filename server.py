@@ -16,4 +16,4 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 print(__name__)
 if __name__ == "__main__":
     print("server running")
-    uvicorn.run("server:app", host="0.0.0.0")
+    uvicorn.run("server:app")
