@@ -1,11 +1,12 @@
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from controllers import controller
-from setup import views
+from setup import Config
 import uvicorn
 import os
 
-PORT = os.environ["PORT"]
+PORT = Config.getPort(5000)
+print(PORT)
 
 app = FastAPI()
 app.include_router(
