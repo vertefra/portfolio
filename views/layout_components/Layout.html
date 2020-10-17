@@ -1,20 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="header">
-        <h1>vertefra</h1>
-        <ul id="menu">
-            <li><a href="#ilike">iLike#</a></li>
-            <li><a href="#projects">projects#</a></li>
-            <li><a href="#contactMe">contactMe#</a></li>
-        </ul>
-    </div>
-    {% block title %}{% endblock %}
-    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="{{ url_for('static', path='/style/style.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', path='/style/layout.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', path='/style/index.css') }}" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} welcome {% endblock %} - vertefra</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="navbar">    
+                <h1 class="letters brand">vertefra</h1>
+                <ul id="menu">
+                    <li><a href="#ilike">iLike#</a></li>
+                    <li><a href="#projects">projects#</a></li>
+                    <li><a href="#contactMe">contactMe#</a></li>
+                </ul>
+            </div>
+            {% block body %}{% endblock %}        
+            </div>
+            <footer>
+            </footer>
+        </div>
+
+    <script type="text/javascript" src="{{ url_for('static', path='/scripts/script.js')}}" ></script>
+    <!-- <script type="text/javascript" defer></script> -->
 </body>
 </html>

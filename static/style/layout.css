@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  width: 50%;
+  margin: 10px;
+  border-bottom: 2px solid var(--second-color);
+}
+
+.navbar li {
+  margin: 10px 0;
+}
+
+.content {
+  background-color: #19181b;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  color: rgba(202, 187, 170, 1);
+  font-size: 36px;
+  margin: 10px;
+}

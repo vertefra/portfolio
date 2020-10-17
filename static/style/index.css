@@ -1,0 +1,30 @@
+.description {
+  text-align: right;
+  animation: fadeInLeft ease 3s;
+  animation-fill-mode: forwards;
+  width: 80%;
+  align-self: flex-start;
+  opacity: 0;
+  margin-bottom: 15px;
+}
+
+.profile-pic {
+  width: 80%;
+  align-self: flex-start;
+  box-shadow: none;
+  border-radius: 0;
+  animation: fadeInRight ease 3s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  border: none;
+  box-shadow: 3px 0 var(--second-color);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.profile-pic img {
+  width: 100%;
+}

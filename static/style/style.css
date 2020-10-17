@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;1,400;1,500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --main-color-: rgba(27, 26, 29, 1);
+  --second-color: rgba(202, 187, 170, 1);
+  --main-tr: rgba(27, 26, 29, 0.7);
+  --back-: #19181b;
+}
+
+body {
+  font-family: Roboto Mono;
+  overflow-x: hidden;
+}
+
+section {
+  color: var(--second-color);
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 3px;
+  margin: 1px 5px;
+  box-shadow: 3px 3px var(--second-color);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
