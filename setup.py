@@ -5,9 +5,10 @@ import os
 
 # router and app set up
 
+views = Jinja2Templates(directory="views")
+
+
 class Config():
-    def __init__(self):
-        self.views = Jinja2Templates(directory="views")
 
     def getPort(self, port=3000):
 
