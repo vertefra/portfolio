@@ -1,1 +1,1 @@
-web: gunicorn -w 4 uvicorn.workers.UvicornWorker server:app
+web: python3 server.py
