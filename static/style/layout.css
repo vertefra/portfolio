@@ -5,12 +5,8 @@
   justify-self: flex-start;
   align-self: flex-start;
   width: 100%;
-<<<<<<< HEAD
-  top: 0;
-=======
   height: 20vh;
   background-color: var(--main-color);
->>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
 }
 
 .navbar ul {
@@ -28,62 +24,15 @@
 }
 
 .content {
-<<<<<<< HEAD
-  background-color: #19181b;
-  background-image: url('../img/back_1.jpg');
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
-=======
   background-image: url('../img/texture.jpg');
   background-size: contain;
   background-position: center;
   height: 100vh;
->>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
-.brand {
-  color: rgba(202, 187, 170, 1);
-  font-size: 30px;
-  margin: 25px;
-}
-
-@media screen and (min-width: 700px) {
-  .content {
-    width: 90%;
-    margin: 0 auto;
-    justify-content: space-between;
-  }
-  .navbar {
-    width: 90%;
-    margin: 0 auto;
-  }
-  .navbar ul {
-    border: none;
-    margin: 35px;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .content {
-    width: 70%;
-    margin: 0 auto;
-  }
-  .navbar {
-    width: 100%;
-  }
-  .brand {
-    font-size: 48px;
-  }
-  .navbar ul {
-    border: none;
-    font-size: 28px;
-  }
-=======
 .show {
   background-image: url('../img/back_1.jpg');
   background-size: contain;
@@ -102,5 +51,4 @@
   font-size: 70px;
   margin: 10px 0 10px 200px;
   animation: fadeInRight 3s forwards ease;
->>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
 }

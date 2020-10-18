@@ -27,32 +27,8 @@ body {
 
 section {
   color: var(--second-color);
-<<<<<<< HEAD
-  font-size: 12px;
-  padding: 8px;
-  border-radius: 3px;
-  margin: 1px 5px;
-  box-shadow: 3px 3px var(--second-color);
-  width: 80%;
-}
-
-@media screen and (min-width: 900px) {
-  section {
-    font-size: 18px;
-    padding: 25px;
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 1287px) {
-  section {
-    font-size: 23px;
-    padding: 25px;
-  }
-=======
   font-size: 28px;
   margin: 0 200px 0 0;
->>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
 }
 
 @keyframes fadeInLeft {
