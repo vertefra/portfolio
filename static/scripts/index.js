@@ -1,11 +1,6 @@
 console.log('sanity');
 
-const handleSubmit = formId => {
-  const form = document.getElementById(formId);
-  console.log(form);
-};
-
-const project = {
+const projectObj = {
   title: '',
   description: '',
   tags: '',
@@ -18,10 +13,41 @@ const submitBtn = document.getElementById('submit-created');
 
 const updateState = state => {
   const cpState = { ...state };
-  for (let key in project) {
+  for (let key in cpState) {
     const element = document.getElementById(key);
     const value = element.value;
     cpState[key] = value;
   }
   return cpState;
+};
+
+const clearForm = state => {
+  for (let key in state) {
+    const input = document.getElementById(key);
+    input.value = '';
+  }
+};
+
+submitBtn.onclick = async ev => {
+  ev.preventDefault();
+
+  const project = updateState(projectObj);
+
+  try {
+    const res = await fetch('/projects/', {
+      credentials: 'same-origin',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(project),
+    });
+
+    const data = await res.json();
+    document.location = '/';
+
+    clearForm(projectObj);
+  } catch (err) {
+    console.log(err);
+  }
 };

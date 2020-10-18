@@ -1,9 +1,19 @@
-from sqlalchemy import Boolean, Column, Integer, String
-from sqlalchemy.orm import relationship
-
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Session
 from pydantic import BaseModel
 
-from server import Base
+
+Base = declarative_base()
+
+
+class ProjectSchema(BaseModel):
+    title: str
+    description: str
+    tags: str = ""
+    img_url: str = ""
+    github: str = "github.com/vertefra"
+    live: str = ""
 
 
 class Project(Base):
@@ -15,16 +25,18 @@ class Project(Base):
     tags = Column(String)
     img_url = Column(String)
     github = Column(String)
-    live = Coulm(String)
+    live = Column(String)
 
+    def __repr__(self):
+        return f"<title:{self.title} \n <description:{self.description}> \n"
 
-class ProjectSchema(BaseModel):
-    name: str
-    description: str
-    tags: str = ""
-    img_url: str = ""
-    github: str = "github.com/vertefra"
-    live: str = ""
+    def get_projects(db: Session):
+        return db.query(Project).all()
 
-    class Config:
-        orm_mode = True
+    def create_project(db: Session, project: ProjectSchema):
+        db_project = Project(**project.dict())
+        print(' dbproject: ', db_project)
+        db.add(db_project)
+        db.commit()
+        db.refresh(db_project)
+        return db_project
