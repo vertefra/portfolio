@@ -32,11 +32,20 @@ section {
   border-radius: 3px;
   margin: 1px 5px;
   box-shadow: 3px 3px var(--second-color);
+  width: 80%;
 }
 
 @media screen and (min-width: 900px) {
   section {
-    font-size: 19px;
+    font-size: 18px;
+    padding: 25px;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1287px) {
+  section {
+    font-size: 23px;
     padding: 25px;
   }
 }
