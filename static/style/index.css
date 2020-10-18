@@ -1,5 +1,6 @@
 .description {
   text-align: right;
+<<<<<<< HEAD
   animation: fadeInRight ease 3s;
   animation-fill-mode: forwards;
   align-self: flex-end;
@@ -26,4 +27,11 @@
 }
 
 @media screen and (min-width: 900px) {
+=======
+  animation: fadeInLeft ease-out 3s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  width: 100%;
+  opacity: 0;
+>>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
 }

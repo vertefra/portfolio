@@ -4,6 +4,8 @@ import os
 
 
 # router and app set up
+views = Jinja2Templates(directory="views")
+
 
 views = Jinja2Templates(directory="views")
 

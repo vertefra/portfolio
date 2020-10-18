@@ -21,12 +21,13 @@ body {
 }
 
 .wrapper {
-  background-color: var(--second-color);
+  background-color: var(--main-color-);
   width: 100%;
 }
 
 section {
   color: var(--second-color);
+<<<<<<< HEAD
   font-size: 12px;
   padding: 8px;
   border-radius: 3px;
@@ -48,6 +49,10 @@ section {
     font-size: 23px;
     padding: 25px;
   }
+=======
+  font-size: 28px;
+  margin: 0 200px 0 0;
+>>>>>>> 80e7e38ef26873c4fb21c56443e1f38ac75822d2
 }
 
 @keyframes fadeInLeft {
