@@ -30,6 +30,28 @@ section {
   font-size: 28px;
 }
 
+fieldset {
+  border: 1px black solid;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 60%;
+  margin: 20px auto;
+}
+
+input {
+  height: 35px;
+  font-size: 20px;
+}
+
+textarea {
+  resize: none;
+  height: 200px;
+}
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;

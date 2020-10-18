@@ -1,9 +1,36 @@
 {% extends "layout_components/Layout.html"%}
 {% block body %}
+<div class="project-form">
 <h1>Insert a new project</h1>
-<form>
+<form action="/project" method="POST">
     <fieldset>
         <legend>Title and description</legend>
+        <label>Title
+            <input type=text placeholder="project name" name="title" autocomplete="false"/>
+        </label>
+        <label>description
+            <textarea placeholder="project description" name="description" autocomplete="false"></textarea>
+        </label>
     </fieldset>
+    <fieldset>
+        <legend>Tags</legend>
+        <label>Techs and languages used in your project.
+            <input type=text placeholder="comma separated tags. ex JavaScript, Python, C etc" name="tags" autocomplete="false"/>
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Links</legend>
+        <label>GitHub link
+            <input type=text placeholder="GitHub repos" name="github" autocomplete="false"/>
+        </label>
+        <label>Live link
+            <input type=text placeholder="Live link" name="live" autocomplete="false"/>
+        </label>
+        <label>ScreenShoot link
+            <input type=text placeholder="ScreenShoot link" name="img_url" autocomplete="false"/>
+        </label>
+    </fieldset>
+    <input type="submit" class="submit-btn" value="submit"/>
 </form>
+</div>
 {% endblock %}

@@ -10,7 +10,7 @@ class Project(Base):
     __tablename__ = "project"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     tags = Column(String)
     img_url = Column(String)
