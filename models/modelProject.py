@@ -25,3 +25,6 @@ class ProjectSchema(BaseModel):
     img_url: str = ""
     github: str = "github.com/vertefra"
     live: str = ""
+
+    class Config:
+        orm_mode = True

@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from controllers import controller
+from controllers import controller, projectsController
 from setup import Config
 import uvicorn
 import os
@@ -27,9 +27,17 @@ Base = declarative_base()
 # endinit
 
 app = FastAPI()
+
+
 app.include_router(
     controller.router,
     prefix="",
+)
+
+
+app.include_router(
+    projectsController.router,
+    prefix="/projects"
 )
 
 

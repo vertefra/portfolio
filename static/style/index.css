@@ -1,4 +1,10 @@
 .description {
+  background-image: url('../img/back_1.jpg');
+  width: 60%;
+  padding: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   text-align: right;
   animation: fadeInLeft ease-out 3s;
   animation-delay: 0.6s;
