@@ -48,3 +48,18 @@
   margin: 10px 0 10px 200px;
   animation: fadeInRight 3s forwards ease;
 }
+
+#flash {
+  display: none;
+  width: 50%;
+  background-color: rgba(255, 240, 204, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  justify-content: center;
+  top: 5px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1;
+}

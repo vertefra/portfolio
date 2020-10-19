@@ -29,10 +29,9 @@ const clearForm = state => {
 };
 
 submitBtn.onclick = async ev => {
-  ev.preventDefault();
+  // ev.preventDefault();
 
   const project = updateState(projectObj);
-
   try {
     const res = await fetch('/projects/', {
       credentials: 'same-origin',
@@ -42,12 +41,11 @@ submitBtn.onclick = async ev => {
       },
       body: JSON.stringify(project),
     });
-
     const data = await res.json();
-    document.location = '/';
-
+    flash('flash', `project ${data.projectCreated} created!`);
     clearForm(projectObj);
   } catch (err) {
     console.log(err);
   }
+  // clearForm(projectObj);
 };
