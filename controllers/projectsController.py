@@ -18,7 +18,11 @@ async def create_project(request: Request, project: modelProject.ProjectSchema):
 
 
 @router.get("/")
-async def index_projects(request: Request):
+async def get_all_projects(request: Request):
+    projects = modelProject.Project.get_all_projects(db)
+    print(projects)
+
+    return views.TemplateResponse("project/index.html", context={"request": request, "projects": projects})
 
 
 @router.get("/create")

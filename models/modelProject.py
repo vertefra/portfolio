@@ -35,8 +35,13 @@ class Project(Base):
 
     def create_project(db: Session, project: ProjectSchema):
         db_project = Project(**project.dict())
-        print(' dbproject: ', db_project)
         db.add(db_project)
         db.commit()
         db.refresh(db_project)
         return db_project
+
+    def get_all_projects(db: Session):
+        return db.query(Project).all()
+
+    def get_single_project(db: Session, project: ProjectSchema, id: int):
+        return db.query(Project).filter(Project.id == id)

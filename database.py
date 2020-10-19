@@ -19,4 +19,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 db = SessionLocal()
 
-# modelProject.Base.metadata.create_all(bind=engine)
+# this actually creates the table following pydantic schema
+
+modelProject.Base.metadata.create_all(bind=engine)
