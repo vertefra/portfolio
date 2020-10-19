@@ -8,7 +8,8 @@
     <div class="project-card" >
         
         <h1>#{{ project.title }}</h1>
-        <div class="project-img">
+
+        <div class="project-img" id="{{ project.id}}">
             <img src="{{project.img_url}}" alt="project screenshot">
         </div>
 
@@ -36,17 +37,19 @@
         </footer>
         {% if admin %}
         <a href="/projects/{{ project.id }}/edit">
-            <button class="edit-btn" action="{{ project.id }}" >edit</button>
+            <button class="edit-btn" >edit</button>
         </a>
         {% endif %}
-        <div class="description-box">
+
+        <div class="description-box" name="{{ project.id }}" >
             <p class='p-description'>{{project.description}}</p>
         </div>
+
     </div>
 
     {% endfor %}
 
-<script type="text/javascript" src="{{ url_for('static', path='scripts/indexProject.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', path='scripts/projectIndex.js') }}"></script>
 
 </div>
 
