@@ -1,25 +1,43 @@
 {% extends "layout_components/Layout.html"%}
 {% block body %}
-{% for project in projects %}
 
-    <h1>{{ project.title }}</h1>
-    <img src="{{project.img_url}}">
-    <p>{{project.description}}</p>
-    
-    {% for tag in project.tags.split(',') %}
-        <div class="tag">{{tag}}</div>
+<div class="projects-index">
+
+    {% for project in projects %}
+
+    <div class="project-card">
+        
+        <h1>{{ project.title }}</h1>
+        <div class="project-img">
+            <img src="{{project.img_url}}" alt="project screenshot">
+        </div>
+        <p>{{project.description}}</p>
+        
+        {% for tag in project.tags.split(',') %}
+            
+            <div class="tag">{{tag}}</div>
+        
+        {% endfor %}
+
+        <footer>
+            
+            {% if project.github %} 
+
+                <h4>github: {{ project.github }}</h4>
+
+            {% endif %}
+
+            {% if project.live %} 
+
+                <h4>live: {{ project.live }}</h4>
+
+            {% endif %}
+
+        </footer>
+    </div>
+
     {% endfor %}
 
-    <footer>
-        
-        {% if project.github %} 
-            <h4>github: {{ project.github }}</h4>
-        {% endif %}
+</div>
 
-        {% if project.live %} 
-            <h4>live: {{ project.live }}</h4>
-        {% endif %}
-    </footer>
-
-{% endfor %}
 {% endblock %}
