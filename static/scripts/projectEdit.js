@@ -1,4 +1,4 @@
-console.log('projectCreate');
+console.log('projectEdit');
 
 const projectObj = {
   title: '',
@@ -33,19 +33,21 @@ submitBtn.onclick = async ev => {
 
   const project = updateState(projectObj);
   try {
-    const res = await fetch('/projects/', {
+    const res = await fetch(`/projects/${ev.target.name}/`, {
       credentials: 'same-origin',
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(project),
     });
     const data = await res.json();
-    flash('flash', `project ${data.projectCreated} created!`);
+    console.log(data);
+    flash('flash', `project_id ${data.projectUpdated} updated!`);
     clearForm(projectObj);
   } catch (err) {
     console.log(err);
+    flash('flash', err);
   }
   // clearForm(projectObj);
 };

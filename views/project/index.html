@@ -5,38 +5,48 @@
 
     {% for project in projects %}
 
-    <div class="project-card">
+    <div class="project-card" >
         
-        <h1>{{ project.title }}</h1>
+        <h1>#{{ project.title }}</h1>
         <div class="project-img">
             <img src="{{project.img_url}}" alt="project screenshot">
         </div>
-        <p>{{project.description}}</p>
-        
-        {% for tag in project.tags.split(',') %}
-            
-            <div class="tag">{{tag}}</div>
-        
-        {% endfor %}
 
+        <section>
+            {% for tag in project.tags.split(',') %}
+                
+                <div class="tag">{{tag}}</div>
+            
+            {% endfor %}
+        </section>
         <footer>
             
             {% if project.github %} 
 
-                <h4>github: {{ project.github }}</h4>
+                <a href="{{ project.github}}" target="_blank">github</a>
 
             {% endif %}
 
             {% if project.live %} 
 
-                <h4>live: {{ project.live }}</h4>
+                <a href="{{ project.live }}" target="_blank">| live</a>
 
             {% endif %}
 
         </footer>
+        {% if admin %}
+        <a href="/projects/{{ project.id }}/edit">
+            <button class="edit-btn" action="{{ project.id }}" >edit</button>
+        </a>
+        {% endif %}
+        <div class="description-box">
+            <p class='p-description'>{{project.description}}</p>
+        </div>
     </div>
 
     {% endfor %}
+
+<script type="text/javascript" src="{{ url_for('static', path='scripts/indexProject.js') }}"></script>
 
 </div>
 

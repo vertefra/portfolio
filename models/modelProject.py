@@ -28,20 +28,33 @@ class Project(Base):
     live = Column(String)
 
     def __repr__(self):
+
         return f"<title:{self.title} \n <description:{self.description}> \n"
 
-    def get_projects(db: Session):
-        return db.query(Project).all()
+    def format(self) -> dict:
+
+        return {k: v for k, v in self.items}
 
     def create_project(db: Session, project: ProjectSchema):
         db_project = Project(**project.dict())
         db.add(db_project)
         db.commit()
         db.refresh(db_project)
+
         return db_project
 
+    def update_project(db: Session, project: ProjectSchema, id: int):
+        db_project = Project(**project.dict())
+        project = db.query(Project).filter(
+            Project.id == id).update({**project.dict()})
+        db.commit()
+
+        return project
+
     def get_all_projects(db: Session):
+
         return db.query(Project).all()
 
-    def get_single_project(db: Session, project: ProjectSchema, id: int):
-        return db.query(Project).filter(Project.id == id)
+    def get_single_project(db: Session, id: int):
+
+        return db.query(Project).filter(Project.id == id).one_or_none()
