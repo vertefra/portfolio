@@ -4,10 +4,13 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 from models import modelProject
 import logging
+import os
 
-URL = "postgresql:///projects"
+DEV_URL = "postgresql:///projects"
+PROD_URL = os.environ["DATABASE_URL"]
 
-engine = create_engine(URL, echo=True)
+
+engine = create_engine(PROD_URL, echo=True)
 
 if not database_exists(engine.url):
     create_database(engine.url)
