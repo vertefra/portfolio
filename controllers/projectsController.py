@@ -28,7 +28,6 @@ async def get_all_projects_admin(request: Request):
     return views.TemplateResponse("project/index.html",
                                   context={"request": request, "projects": projects, "admin": True})
 
-
 @router.get("/{project_id}/edit")
 async def edit_project(request: Request, project_id: int):
     project = modelProject.Project.get_single_project(db, project_id)
