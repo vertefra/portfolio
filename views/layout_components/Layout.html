@@ -2,30 +2,43 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
+
+        <script type="text/javascript" src="{{ url_for('static', path='/scripts/scripts.js')}}"  ></script>
+
+
         <link href="{{ url_for('static', path='/style/style.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', path='/style/layout.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', path='/style/index.css') }}" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <link href="{{ url_for('static', path='/style/normalize.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', path='/style/project-create.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', path='/style/project-index.css') }}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>{% block title %} welcome {% endblock %} - vertefra</title>
     </head>
     <body>
+    <div class="wrapper">
         <div class="content">
+            <div id="flash">
+            
+            </div>
             <div class="navbar">    
                 <h1 class="letters brand">vertefra</h1>
                 <ul id="menu">
                     <li><a href="/">iLike#</a></li>
-                    <li><a href="/projects">projects#</a></li>
+                    <li><a href="/projects/">projects#</a></li>
                     <li><a href="/contactMe">contactMe#</a></li>
                 </ul>
-            </div>
-            {% block body %}{% endblock %}        
-            </div>
+            </div >
+            <div class="show">
+            {% block body %}{% endblock %} 
+            </div>       
+        </div>
             <footer>
             </footer>
         </div>
-
-    <script type="text/javascript" src="{{ url_for('static', path='/scripts/script.js')}}" ></script>
-    <!-- <script type="text/javascript" defer></script> -->
+    </div>
 </body>
+<script type="text/javascript" src="{{ url_for('static', path='/scripts/messages.js')}}" ></script>
+<script type="text/javascript" src="{{ url_for('static', path='/scripts/index.js')}}" ></script>
 </html>

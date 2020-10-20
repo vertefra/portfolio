@@ -20,13 +20,41 @@ body {
   overflow-x: hidden;
 }
 
+.wrapper {
+  background-color: var(--main-color-);
+  width: 100%;
+}
+
 section {
   color: var(--second-color);
-  font-size: 12px;
-  padding: 8px;
-  border-radius: 3px;
-  margin: 1px 5px;
-  box-shadow: 3px 3px var(--second-color);
+  font-size: 28px;
+}
+
+fieldset {
+  border: 1px black solid;
+}
+
+a {
+  color: #114d44;
+  border-bottom: 1px solid #114d44;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 60%;
+  margin: 20px auto;
+}
+
+input {
+  height: 35px;
+  font-size: 20px;
+}
+
+textarea {
+  resize: none;
+  height: 200px;
 }
 
 @keyframes fadeInLeft {
@@ -48,5 +76,26 @@ section {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(10px);
   }
 }
