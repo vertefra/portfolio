@@ -11,3 +11,5 @@ fastAPI postrgresql and jinja2
 `python3 server.py --env=dev` will use as a port the port argument in getPort or **3000** as default
 
 `python3 server.py --env=prod` will load the port from the environment
+
+- **v0.0.8** Project section complete, project editing completed, postgres db added
