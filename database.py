@@ -13,11 +13,13 @@ PROD_URL = os.environ["DATABASE_URI"]
 
 engine = create_engine(PROD_URL)
 
-if not database_exists(engine.url):
-    create_database(engine.url)
-else:
-    print("Engine connected")
-    engine.connect()
+# if not database_exists(engine.url):
+#     create_database(engine.url)
+# else:
+#     print("Engine connected")
+#     engine.connect()
+
+engine.connect()
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
