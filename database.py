@@ -8,7 +8,7 @@ import os
 
 
 DEV_URL = "postgresql:///projects"
-PROD_URL = os.environ["DATABASE_URL"]
+PROD_URL = os.environ["DATABASE_URI"]
 
 
 engine = create_engine(PROD_URL)
