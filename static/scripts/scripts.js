@@ -1,3 +1,5 @@
+console.log('Scripts');
+
 const applyParallax = (base, DOMElement, Yvalue, Xvalue = 0) => {
   const distance = base.getBoundingClientRect().top;
   const wHeigth = window.innerHeight;
@@ -19,7 +21,7 @@ const makeSticky = DOMElement => {
   }
 };
 
-const fadeIn = DOMElement => {
+const scrollFadeIn = DOMElement => {
   let opacity = 1;
   // distance for the element from the top screen. when negative is out of screen
   const halfPage = window.innerHeight / 2;
@@ -63,3 +65,24 @@ const isInScreen = DOMElement => {
     return false;
   }
 };
+
+// const fadeOut = DOMElement => {
+//   let opacity = 1;
+//   const TIME = 1000;
+//   let count = TIME;
+//   const INTERVAL = 100;
+//   const COUNT = TIME / INTERVAL;
+
+//   const value = setInterval(() => {
+//     const rate = INTERVAL / TIME;
+//     opacity -= rate;
+
+//     console.log(DOMElement);
+
+//     count -= INTERVAL;
+//     if (count <= 0) {
+//       clearInterval(value);
+//     }
+//   }, INTERVAL);
+//   DOMElement.display = 'none';
+// };

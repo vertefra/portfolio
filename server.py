@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from controllers import controller
+from controllers import controller, projectsController
 from setup import Config
 import uvicorn
 import os
@@ -9,11 +9,18 @@ PORT = Config.getPort(5000)
 print(PORT)
 
 app = FastAPI()
+
+
 app.include_router(
     controller.router,
     prefix="",
 )
 
+app.include_router(
+    projectsController.router,
+    prefix="/projects",
+    tags=["projects"]
+)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

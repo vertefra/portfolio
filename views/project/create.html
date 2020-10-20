@@ -1,0 +1,76 @@
+{% extends "layout_components/Layout.html"%}
+{% block body %}
+<div class="project-form" id="create-project">
+<h1>Insert a new project</h1>
+<form>
+    <fieldset>
+        <legend>Title and description</legend>
+        <label>Title
+            <input 
+                type=text 
+                placeholder="project name" 
+                name="title" 
+                id="title" 
+                autocomplete="false"/>
+        </label>
+        <label>description
+            <textarea 
+                placeholder="project description" 
+                name="description" 
+                id="description" 
+                autocomplete="false"
+            ></textarea>
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Tags</legend>
+        <label>Techs and languages used in your project.
+            <input 
+                type=text 
+                placeholder="comma separated tags. ex JavaScript, Python, C etc" 
+                name="tags" autocomplete="false"
+                id="tags"    
+            />
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Links</legend>
+        <label>GitHub link
+            <input 
+                type=text 
+                placeholder="GitHub repos" 
+                name="github" 
+                id="github"
+                autocomplete="false"
+            />
+        </label>
+        <label>Live link
+            <input 
+                type=text 
+                placeholder="Live link" 
+                name="live" 
+                autocomplete="false"
+                id="live"
+            />
+        </label>
+        <label>ScreenShoot link
+            <input 
+                type=text 
+                placeholder="ScreenShoot link" 
+                name="img_url" 
+                autocomplete="false"
+                id="img_url"
+            />
+        </label>
+    </fieldset>
+    <input 
+        type="button" 
+        class="submit-btn" 
+        value="submit"
+        id="submit-created"
+        />
+</form>
+<script type="text/javascript" src="{{ url_for('static', path='/scripts/projectCreate.js')}}" ></script>
+
+</div>
+{% endblock %}

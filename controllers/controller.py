@@ -7,10 +7,10 @@ router = APIRouter()
 
 @router.get("/")
 async def index(request: Request):
-    return views.TemplateResponse("index.html", {"request": request})
+    return views.TemplateResponse("router/index.html", {"request": request})
 
 
 @router.get("/{notFoundPath}")
 async def notFound(request: Request):
     print(request)
-    return views.TemplateResponse("notFound.html", {"request": request})
+    return views.TemplateResponse("layout_components/underConstruction.html", {"request": request})

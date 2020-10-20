@@ -28,7 +28,33 @@ body {
 section {
   color: var(--second-color);
   font-size: 28px;
-  margin: 0 200px 0 0;
+}
+
+fieldset {
+  border: 1px black solid;
+}
+
+a {
+  color: #114d44;
+  border-bottom: 1px solid #114d44;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 60%;
+  margin: 20px auto;
+}
+
+input {
+  height: 35px;
+  font-size: 20px;
+}
+
+textarea {
+  resize: none;
+  height: 200px;
 }
 
 @keyframes fadeInLeft {
@@ -50,5 +76,26 @@ section {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(10px);
   }
 }
