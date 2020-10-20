@@ -1,18 +1,48 @@
 console.log('projectIndex');
 
-const projectImages = document.querySelectorAll('.project-img');
-
 const toggleDescriptionVisibility = id => {
   const description = document.querySelector(`.description-box[name="${id}"]`);
-  description.classList.toggle('description-visible');
+  if (description) {
+    description.classList.toggle('description-visible');
+  }
 };
 
-for (let img of projectImages) {
-  img.addEventListener('mouseover', ev => {
+const projectCards = document.querySelectorAll('.project-card');
+
+for (let card of projectCards) {
+  card.addEventListener('mouseover', ev => {
     toggleDescriptionVisibility(ev.target.id);
   });
 
-  img.addEventListener('mouseout', ev => {
+  card.addEventListener('mouseout', ev => {
     toggleDescriptionVisibility(ev.target.id);
   });
 }
+
+// enable effect of delay animation for each card
+
+for (let card of projectCards) {
+  if (isInScreen(card) && !card.classList.contains('animate-card')) {
+    card.classList.add('animate-card');
+  }
+}
+
+window.addEventListener('scroll', e => {
+  for (let card of projectCards) {
+    if (isInScreen(card) && !card.classList.contains('animate-card')) {
+      card.classList.add('animate-card');
+    }
+  }
+});
+
+// let anDelay = 0;
+
+// for (let card of projectCards) {
+//   if (isInScreen(card) && card.style.display =) {
+//     console.log('in screen');
+//     card.style.display = 'none';
+//     card.style.display = 'block';
+//     card.style.animationDelay = `${anDelay}s`;
+//     anDelay += 0.6;
+//   }
+// }

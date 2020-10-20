@@ -1,30 +1,51 @@
 .projects-index {
-  margin: 120px 50px 50px 50px;
+  margin: 50px 0 0 50px;
   padding: 20px;
   display: flex;
   width: 100%;
+  flex-direction: column;
+  align-items: left;
+}
+
+.card-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .project-card {
-  background-color: rgba(255, 240, 204, 0.5);
-  margin: 15px 30px 0 0;
+  background-color: rgba(255, 240, 204, 0.25);
+  margin: 0 0 50px 130px;
   cursor: pointer;
   width: 300px;
   height: 350px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 7px 7px 4px var(--main-color-), 14px 14px 4px var(--second-color);
   position: relative;
   border: 1px solid var(--main-color-);
+  transition: border 0.5s;
+  opacity: 0;
+  border: 6px solid transparent;
+}
+
+.project-card:hover {
+  border: 6px solid #4e040b;
+}
+
+.animate-card {
+  animation: fadeInLeft 1.2s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .project-card h1 {
-  margin: 5px 0;
+  margin: 5px 0 15px 0;
+  font-size: 18px;
 }
 
 .project-img {
-  border: 4px var(--main-color-) solid;
-  margin-bottom: 5px;
+  border-bottom: 4px var(--main-color-) solid;
+  margin-bottom: 15px;
+  height: 170px;
   padding: 1px;
 }
 
@@ -50,14 +71,20 @@
 }
 
 .project-card footer {
+  background-color: var(--main-color-);
   position: absolute;
   text-align: right;
   padding: 5px 0;
-  bottom: 5px;
+  bottom: 0px;
   right: 0;
   left: 0;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+
+.project-card footer a {
+  margin: 5px 10px;
 }
 
 .description-box {
@@ -68,15 +95,14 @@
 .description-visible {
   opacity: 1;
   display: flex;
-  position: fixed;
-  /* background-color: var(--main-tr); */
+  position: relative;
+  bottom: 50px;
+  line-height: 32px;
   color: var(--second-color);
-  top: 21vh;
-  left: 0;
-  right: 0;
   margin: auto;
   padding: 20px;
   width: 50%;
   animation: fadeInLeft 1s forwards;
   border-bottom: 1px var(--second-color) solid;
+  font-size: 26px;
 }
