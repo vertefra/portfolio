@@ -1,0 +1,60 @@
+{% extends "layout_components/Layout.html"%}
+{% block body %}
+
+<div class="projects-index">
+    {% for project in projects %}
+    <div class="card-area">
+
+        <div class="project-card" >
+            
+            <h1>#{{ project.title }}</h1>
+
+            <div class="project-img" id="{{ project.id}}">
+                <img src="{{project.img_url}}" alt="project screenshot">
+            </div>
+
+            <section>
+                {% for tag in project.tags.split(',') %}
+                    
+                    <div class="tag">{{tag}}</div>
+                
+                {% endfor %}
+            </section>
+            <footer>
+                
+                {% if project.github %} 
+
+                    <a href="{{ project.github}}" target="_blank">github</a>
+
+                {% endif %}
+
+                {% if project.live %} 
+
+                    <a href="{{ project.live }}" target="_blank"> live</a>
+
+                {% endif %}
+
+            </footer>
+            {% if admin %}
+            <a href="/projects/{{ project.id }}/edit">
+                <button class="edit-btn" >edit</button>
+            </a>
+            {% endif %}
+
+        </div>
+
+        <div class="description-box" name="{{ project.id }}" >
+            <p class='p-description'>{{project.description}}</p>
+        </div>
+
+    </div>
+
+    
+
+    {% endfor %}
+
+<script type="text/javascript" src="{{ url_for('static', path='scripts/projectIndex.js') }}"></script>
+
+</div>
+
+{% endblock %}
