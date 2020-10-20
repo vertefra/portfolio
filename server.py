@@ -16,18 +16,11 @@ app.include_router(
     prefix="",
 )
 
-
 app.include_router(
     projectsController.router,
     prefix="/projects",
     tags=["projects"]
 )
-
-
-# @app.post("/projects")
-# async def test(request: Request):
-#     return {"test": True}
-
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

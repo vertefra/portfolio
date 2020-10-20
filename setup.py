@@ -8,9 +8,12 @@ import os
 views = Jinja2Templates(directory="views")
 
 
+views = Jinja2Templates(directory="views")
+
+
 class Config():
 
-    def getPort(port=3000):
+    def getPort(self, port=3000):
 
         argv = sys.argv
 
