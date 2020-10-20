@@ -10,7 +10,7 @@ DEV_URL = "postgresql:///projects"
 PROD_URL = os.environ["DATABASE_URL"]
 
 
-engine = create_engine(PROD_URL, echo=True)
+engine = create_engine(PROD_URL, sslmode='require')
 
 if not database_exists(engine.url):
     create_database(engine.url)
