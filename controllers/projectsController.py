@@ -10,8 +10,9 @@ router = APIRouter()
 @router.post("/")
 async def create_project(
         request: Request, project: modelProject.ProjectSchema):
-    if modelProject.Project.create_project(db, project):
-        return {"success": True, "projectCreated": project.title}
+    project_created = modelProject.Project.create_project(db, project)
+    if project_created is not False:
+        return {"success": True, "projectCreated": project_created.title}
     else:
         return {"success": False, "message": "failed creating new project"}
 

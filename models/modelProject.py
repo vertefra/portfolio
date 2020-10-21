@@ -59,7 +59,8 @@ class Project(Base):
 
             return project
 
-        except:
+        except Exception as err:
+            print("Error deleting project => ", err)
             db.rollback()
 
             return False

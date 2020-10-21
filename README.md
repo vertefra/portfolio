@@ -14,4 +14,4 @@ fastAPI postrgresql and jinja2
 
 - **v0.0.8** Project section complete, project editing completed, postgres db added
 
-- **v0.0.9** Oct 21 2020. Exceptions added. Delete route for projects added
+- **v0.0.9** Oct 21 2020. Exceptions added. Delete route for projects added. Bug fix for same id in creating project
