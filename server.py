@@ -1,9 +1,8 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from controllers import controller, projectsController
 from setup import project_config
 import uvicorn
-import os
 
 
 PORT = project_config.PORT

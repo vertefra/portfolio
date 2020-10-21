@@ -23,18 +23,22 @@ class Config():
         argv = sys.argv
 
         if len(argv) == 1:
+            print("No environment spcified. setting to development")
             self.env = "dev"
 
         elif len(argv) == 2:
             opt = argv[1].split('=')[0]
             cmd = argv[1].split('=')[1]
 
-            if opt == 'env':
+            print("reading command options")
+            print("option is => ", opt)
+            print("cmd is    => ", cmd)
+            if opt == '--env':
 
                 if cmd == 'dev' or cmd == 'prod' or cmd == 'test':
-                    print("setting envionment to => ", self.env)
                     self.env = cmd
-
+                    print("setting envionment to => ", self.env)
+                    return self.env
                 else:
                     print(f'option {cmd} not foond setting env=dev')
 
@@ -55,6 +59,10 @@ class Config():
             self.DB_URL = os.environ['DATABASE_URL']
 
 
+print("===== SETTING EVIRONTMENT VARIABLES =====")
 project_config = Config()
 project_config.get_env()
+
+print("current config: ")
+print("env = ", project_config.env)
 project_config.def_setup(port=5000)
