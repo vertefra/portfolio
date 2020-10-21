@@ -19,7 +19,7 @@ class Config():
 
         if len(argv) == 1:
             self.env = "dev"
-        
+
         elif len(argv) == 2:
             opt = argv[1].split('=')[0]
             cmd = argv[1].split('=')[1]
@@ -28,7 +28,7 @@ class Config():
 
                 if cmd == 'dev' or cmd == 'prod' or 'test':
                     self.env = cmd
-                
+
                 else:
                     print(f'option {cmd} not foond setting env=dev')
 
@@ -39,12 +39,12 @@ class Config():
     def def_setup(self, port=3000):
 
         if (self.env):
-            
+
             if self.env == 'dev':
-                
+
                 self.PORT = port
                 self.DB_URL = "postgresql:///projects"
-            
+
             elif self.env == 'prod':
 
                 self.PORT = os.environ['PORT']
