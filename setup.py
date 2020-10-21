@@ -15,6 +15,8 @@ class Config():
 
     def __init__(self):
         self.env = None
+        self.DB_URL = None
+        self.PORT = None
 
     def get_env(self):
 
