@@ -28,11 +28,24 @@ async def get_all_projects_admin(request: Request):
     return views.TemplateResponse("project/index.html",
                                   context={"request": request, "projects": projects, "admin": True})
 
+# DELETE - delete the project - GET /projects/{id}/delete
+
+
+@router.get("/{project_id}/delete")
+async def delete_project(request: Request, project_id: int):
+    if modelProject.Project.delete_project(db, project_id):
+        projects = modelProject.Project.get_all_projects(db)
+        return views.TemplateResponse("project/index.html",
+                                      context={"request": request, 'projects': projects})
+    else:
+        return views.TemplateResponse("project/index.html", context={"request": request, 'flashMessage': "an error occurred"})
+
+# EDIT - get the edit form - GET /projects/{id}/edit
+
 
 @router.get("/{project_id}/edit")
 async def edit_project(request: Request, project_id: int):
     project = modelProject.Project.get_single_project(db, project_id)
-    print(project.description)
     return views.TemplateResponse("project/edit.html", context={"request": request, "project": project})
 
 

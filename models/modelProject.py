@@ -31,10 +31,6 @@ class Project(Base):
 
         return f"<title:{self.title} \n <description:{self.description}> \n"
 
-    def format(self) -> dict:
-
-        return {k: v for k, v in self.items}
-
     def create_project(db: Session, project: ProjectSchema):
         db_project = Project(**project.dict())
         db.add(db_project)
@@ -50,6 +46,19 @@ class Project(Base):
         db.commit()
 
         return project
+
+    def delete_project(db: Session, id: int):
+
+        try:
+            project = db.query(Project).filter(Project.id == id).delete()
+            db.commit()
+
+            return project
+
+        except:
+            db.rollback()
+
+            return False
 
     def get_all_projects(db: Session):
 
