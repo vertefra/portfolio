@@ -27,6 +27,7 @@ class Config():
             if opt == 'env':
 
                 if cmd == 'dev' or cmd == 'prod' or cmd == 'test':
+                    print("setting envionment to => ", self.env)
                     self.env = cmd
 
                 else:
@@ -38,17 +39,15 @@ class Config():
 
     def def_setup(self, port=3000):
 
-        if (self.env):
+        if self.env == 'dev':
 
-            if self.env == 'dev':
+            self.PORT = port
+            self.DB_URL = "postgresql:///projects"
 
-                self.PORT = port
-                self.DB_URL = "postgresql:///projects"
+        elif self.env == 'prod':
 
-            elif self.env == 'prod':
-
-                self.PORT = os.environ['PORT']
-                self.DB_URL = os.environ['DATABASE_URL']
+            self.PORT = os.environ['PORT']
+            self.DB_URL = os.environ['DATABASE_URL']
 
 
 project_config = Config()
