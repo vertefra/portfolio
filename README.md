@@ -13,3 +13,5 @@ fastAPI postrgresql and jinja2
 `python3 server.py --env=prod` will load the port from the environment
 
 - **v0.0.8** Project section complete, project editing completed, postgres db added
+
+- **v0.0.9** Oct 21 2020. Exceptions added. Delete route for projects added
