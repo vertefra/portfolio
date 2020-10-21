@@ -13,6 +13,9 @@ views = Jinja2Templates(directory="views")
 
 class Config():
 
+    def __init__(self):
+        self.env = None
+
     def get_env(self):
 
         argv = sys.argv
