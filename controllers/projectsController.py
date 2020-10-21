@@ -10,8 +10,10 @@ router = APIRouter()
 @router.post("/")
 async def create_project(
         request: Request, project: modelProject.ProjectSchema):
-    project = modelProject.Project.create_project(db, project)
-    return {"success": True, "projectCreated": project.title}
+    if modelProject.Project.create_project(db, project):
+        return {"success": True, "projectCreated": project.title}
+    else:
+        return {"success": False, "message": "failed creating new project"}
 
 
 @router.get("/")
@@ -36,10 +38,13 @@ async def get_all_projects_admin(request: Request):
 async def delete_project(request: Request, project_id: int):
     if modelProject.Project.delete_project(db, project_id):
         projects = modelProject.Project.get_all_projects(db)
-        return views.TemplateResponse("project/index.html",
-                                      context={"request": request, 'projects': projects})
+        return views.TemplateResponse(
+            "project/index.html",
+            context={"request": request, 'projects': projects})
     else:
-        return views.TemplateResponse("project/index.html", context={"request": request, 'flashMessage': "an error occurred"})
+        return views.TemplateResponse(
+            "project/index.html",
+            context={"request": request, 'flashMessage': "an error occurred"})
 
 # EDIT - get the edit form - GET /projects/{id}/edit
 
@@ -47,7 +52,8 @@ async def delete_project(request: Request, project_id: int):
 @router.get("/{project_id}/edit")
 async def edit_project(request: Request, project_id: int):
     project = modelProject.Project.get_single_project(db, project_id)
-    return views.TemplateResponse("project/edit.html", context={"request": request, "project": project})
+    return views.TemplateResponse(
+        "project/edit.html", context={"request": request, "project": project})
 
 
 # CREATE-FORM ROUTE - GET /projects/create
@@ -60,11 +66,16 @@ async def render_create_form(request: Request):
 # UPDATE ROUTE - PUT /projects/:id
 
 @router.put("/{project_id}")
-async def update_project(request: Request, project: modelProject.ProjectSchema, project_id: int):
+async def update_project(
+        request: Request,
+        project: modelProject.ProjectSchema,
+        project_id: int):
+
     updated_id = modelProject.Project.update_project(db, project, project_id)
     return {"success": True, "projectUpdated": updated_id}
 
 
 @router.get("/{notFoundPath}")
 async def notFound(request: Request):
-    return views.TemplateResponse("layout_components/underConstruction.html", {"request": request})
+    return views.TemplateResponse(
+        "layout_components/underConstruction.html", {"request": request})

@@ -14,7 +14,7 @@ if project_config.env == 'dev':
         print("Engine connected")
         engine.connect()
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=True, bind=engine)
 
 db = SessionLocal()
 
