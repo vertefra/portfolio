@@ -32,15 +32,19 @@ class Project(Base):
         return f"<title:{self.title} \n <description:{self.description}> \n"
 
     def create_project(db: Session, project: ProjectSchema):
-        db_project = Project(**project.dict())
-        db.add(db_project)
-        db.commit()
-        db.refresh(db_project)
-
-        return db_project
+        try:
+            db_project = Project(**project.dict())
+            db.add(db_project)
+            db.commit()
+            db.refresh(db_project)
+            return db_project
+        except Exception as err:
+            db.rollback()
+            print('Error in creating new project => ', err)
+            return False
 
     def update_project(db: Session, project: ProjectSchema, id: int):
-        db_project = Project(**project.dict())
+        Project(**project.dict())
         project = db.query(Project).filter(
             Project.id == id).update({**project.dict()})
         db.commit()
