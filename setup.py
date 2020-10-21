@@ -51,12 +51,6 @@ class Config():
                 self.DB_URL = os.environ['DATABASE_URL']
 
 
-<<<<<<< HEAD
-                    # command not found
-                    return port
-
-=======
 project_config = Config()
 project_config.get_env()
 project_config.def_setup(port=5000)
->>>>>>> 20d9debbd951306b7fff561f05c73dbc8efd1526
