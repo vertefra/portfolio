@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
 from fastapi.responses import HTMLResponse
 from setup import project_config
 from auth import create_token
@@ -27,7 +27,7 @@ async def login(body: dict):
 
         # this is part of the payload for the encrypted signature
 
-        token = create_token({'username': 'verte'})
+        token = create_token({'admin': 'verte'})
 
         return {"success": True, "token": token}
     else:

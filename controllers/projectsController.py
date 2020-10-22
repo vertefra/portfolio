@@ -1,7 +1,12 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Header
+from typing import Optional
 from models import modelProject
 from setup import project_config
 from database import db
+from auth import verify_token, create_token
+
+
+import json
 
 
 router = APIRouter()
@@ -27,7 +32,16 @@ async def get_all_projects(request: Request):
 
 
 @router.get("/admin-index")
-async def get_all_projects_admin(request: Request):
+async def get_all_projects_admin(request: Request, authorization: str = Header(None)):
+
+    if authorization == None:
+        return views.TemplateResponse("router/login.html", context={"request": request})
+
+    print(" ====== RECEIVED ======= ")
+    print(authorization)
+
+    verify_token(authorization)
+
     projects = modelProject.Project.get_all_projects(db)
     return views.TemplateResponse(
         "project/index.html",

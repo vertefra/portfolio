@@ -28,8 +28,8 @@ loginBtn.onclick = async ev => {
         localStorage.setItem('token', JSON.stringify(data.token));
 
         setTimeout(() => {
-          document.location = '/projects/admin-index';
-        }, 2000);
+          protectedRequest('/projects/admin-index/');
+        }, 10);
       }
     } catch (err) {
       console.log(err);

@@ -1,3 +1,14 @@
-const msg = 'This website is not optimized for small screen yet!';
+console.log('index Script');
 
-flash('flash', msg, 2500);
+const protectedRequest = async url => {
+  const token = localStorage.getItem('token');
+  decodedToken = JSON.parse(token);
+  console.log('starting protected request', url);
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: decodedToken,
+    },
+  });
+};
