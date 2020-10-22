@@ -1,3 +1,5 @@
+console.log('messages Script');
+
 const flash = (DOMElementID, message, duration = 3000) => {
   const flash = document.getElementById(DOMElementID);
   window.scrollTo(0, 0);

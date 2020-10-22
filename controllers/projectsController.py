@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Request
 from models import modelProject
-from setup import views
+from setup import project_config
 from database import db
 
 
 router = APIRouter()
+views = project_config.views
 
 
 @router.post("/")

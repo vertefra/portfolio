@@ -1,14 +1,8 @@
 from fastapi.templating import Jinja2Templates
+from dotenv import load_dotenv
 
 import sys
 import os
-
-
-# router and app set up
-views = Jinja2Templates(directory="views")
-
-
-views = Jinja2Templates(directory="views")
 
 
 class Config():
@@ -17,10 +11,21 @@ class Config():
         self.env = None
         self.DB_URL = None
         self.PORT = None
+        self.PSW = None
+        self.views = None
 
     def get_env(self):
 
         argv = sys.argv
+        load_dotenv('./.env')
+
+        self.PSW = os.getenv("ADMIN_PSW")
+        self.views = Jinja2Templates(directory="views")
+
+        if(self.PSW):
+            print("Setted admin password")
+        else:
+            print("failed to set admin password")
 
         if len(argv) == 1:
             print("No environment spcified. setting to development")
