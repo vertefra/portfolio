@@ -11,4 +11,7 @@ const protectedRequest = async url => {
       Authorization: decodedToken,
     },
   });
+
+  const data = await res.json();
+  console.log(data);
 };

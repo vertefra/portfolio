@@ -5,7 +5,6 @@ from setup import project_config
 from database import db
 from auth import verify_token, create_token
 
-
 import json
 
 
@@ -37,12 +36,16 @@ async def get_all_projects_admin(request: Request, authorization: str = Header(N
     if authorization == None:
         return views.TemplateResponse("router/login.html", context={"request": request})
 
-    print(" ====== RECEIVED ======= ")
-    print(authorization)
+    try:
+        if verify_token(authorization is not False):
+            projects = modelProject.Project.get_all_projects(db)
+            return views.TemplateResponse(
+                "project/index.html", context={"request": request,
+                                               "projects": projects})
 
-    verify_token(authorization)
+    except Exception as err:
+        return {"success": False, "error": err}
 
-    projects = modelProject.Project.get_all_projects(db)
     return views.TemplateResponse(
         "project/index.html",
         context={"request": request, "projects": projects, "admin": True})

@@ -23,16 +23,16 @@ def create_token(data: dict):
 
 
 def verify_token(token: str = Depends(oauth2_scheme)):
-    print("====== verify ===== ")
-    print(token)
+
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},)
-
-    print(" ====== SECRRET KEY ==== ")
-    print(SECRET_KEY)
-    print(token)
-    payload = jwt.decode(token, SECRET_KEY, algorithms="HS256")
-    print(payload)
-    print('======= USERNAME =====')
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms="HS256")
+        if payload["admin"] is not "verte":
+            raise credentials_exception
+        else:
+            return payload["admin"]
+    except JWTError:
+        raise credentials_exception
