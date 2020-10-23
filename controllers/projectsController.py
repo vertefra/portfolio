@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Request, Header
 from typing import Optional
+from starlette.responses import RedirectResponse
 from models import modelProject
 from setup import project_config
 from database import db
@@ -34,21 +35,29 @@ async def get_all_projects(request: Request):
 async def get_all_projects_admin(request: Request, authorization: str = Header(None)):
 
     if authorization == None:
+        print("NO AUTH")
         return views.TemplateResponse("router/login.html", context={"request": request})
 
     try:
-        if verify_token(authorization is not False):
+        if verify_token(authorization):
+
+            print("AUTHORIZED")
+
             projects = modelProject.Project.get_all_projects(db)
             return views.TemplateResponse(
-                "project/index.html", context={"request": request,
-                                               "projects": projects})
+                "project/index.html", status_code=200, context={"request": request,
+                                                                "projects": projects,
+                                                                "admin": True})
 
     except Exception as err:
+
+        print("NOT VALID TOKEN")
+
         return {"success": False, "error": err}
 
-    return views.TemplateResponse(
-        "project/index.html",
-        context={"request": request, "projects": projects, "admin": True})
+        # return views.TemplateResponse(
+        #     "project/index.html",
+        #     context={"request": request, "projects": projects, "admin": True})
 
 # DELETE - delete the project - GET /projects/{id}/delete
 

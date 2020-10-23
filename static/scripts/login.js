@@ -27,9 +27,10 @@ loginBtn.onclick = async ev => {
         flash('flash', 'you are now admin');
         localStorage.setItem('token', JSON.stringify(data.token));
 
+        const htmlRes = await protectedRequest('/projects/admin-index/');
         setTimeout(() => {
-          protectedRequest('/projects/admin-index/');
-        }, 10);
+          document.write(htmlRes);
+        }, 2000);
       }
     } catch (err) {
       console.log(err);

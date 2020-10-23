@@ -15,8 +15,6 @@ def create_token(data: dict):
     payload = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=45)
     payload.update({"exp": expire})
-    print("FIRST STEP PAYLOAD")
-    print(payload)
     encoded_jwt = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
     return encoded_jwt
@@ -30,9 +28,9 @@ def verify_token(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},)
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms="HS256")
-        if payload["admin"] is not "verte":
-            raise credentials_exception
-        else:
+        if payload["admin"] == "verte":
             return payload["admin"]
+        else:
+            raise credentials_exception
     except JWTError:
         raise credentials_exception
