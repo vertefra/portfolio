@@ -3,10 +3,11 @@ from pydantic import BaseModel
 from fastapi import HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
+from setup import project_config
 import os
 
-SECRET_KEY = os.environ["SECRET_KEY"]
-
+SECRET_KEY = project_config.SECRET_KEY
+ADMIN_NAME = project_config.ADMIN_NAME
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
@@ -28,7 +29,7 @@ def verify_token(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},)
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms="HS256")
-        if payload["admin"] == "verte":
+        if payload["admin"] == ADMIN_NAME:
             return payload["admin"]
         else:
             raise credentials_exception

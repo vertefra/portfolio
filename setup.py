@@ -13,6 +13,8 @@ class Config():
         self.PORT = None
         self.PSW = None
         self.views = None
+        self.ADMIN_NAME = None
+        self.SECRET_KEY = None
 
     def get_env(self):
 
@@ -20,6 +22,9 @@ class Config():
         load_dotenv('./.env')
 
         self.PSW = os.getenv("ADMIN_PSW")
+        self.ADMIN_NAME = os.getenv("ADMIN_NAME")
+        self.SECRET_KEY = os.getenv("SECRET_KEY")
+
         self.views = Jinja2Templates(directory="views")
 
         if(self.PSW):
