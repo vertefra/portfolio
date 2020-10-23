@@ -33,15 +33,9 @@ submitBtn.onclick = async ev => {
 
   const project = updateState(projectObj);
   try {
-    const res = await fetch('/projects/', {
-      credentials: 'same-origin',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(project),
-    });
+    const res = await protectedRequest('/projects/', 'POST', project);
     const data = await res.json();
+
     flash('flash', `project ${data.projectCreated} created!`);
     clearForm(projectObj);
   } catch (err) {
