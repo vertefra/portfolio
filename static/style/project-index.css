@@ -14,15 +14,14 @@
 }
 
 .project-card {
-  background-color: rgba(255, 240, 204, 0.25);
+  /* background-color: rgba(255, 240, 204, 0.25); */
   margin: 0 0 50px 130px;
   cursor: pointer;
   width: 300px;
-  height: 350px;
+  height: 410px;
   padding: 10px;
   border-radius: 10px;
   position: relative;
-  border: 1px solid var(--main-color-);
   transition: border 0.5s;
   opacity: 0;
   border: 6px solid transparent;
@@ -38,15 +37,20 @@
 }
 
 .project-card h1 {
+  background-color: var(--second-color);
+  border-radius: 10px;
   margin: 5px 0 15px 0;
-  font-size: 18px;
+  padding: 5px;
+  font-size: 20px;
 }
 
 .project-img {
   border-bottom: 4px var(--main-color-) solid;
+  background-color: var(--second-color);
   margin-bottom: 15px;
   height: 170px;
-  padding: 1px;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .project-img img {
@@ -68,19 +72,23 @@
   border-radius: 10px;
   padding: 3px 5px;
   margin: 1px 1px 1px 0;
+  background-color: #114d44;
+  font-size: 18px;
 }
 
 .project-card footer {
-  background-color: var(--main-color-);
+  background-color: var(--second-color);
   position: absolute;
   text-align: right;
-  padding: 5px 0;
+  padding: 12px 0;
   bottom: 0px;
   right: 0;
   left: 0;
   width: 100%;
   margin: 0 auto;
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
+
+  font-weight: 800;
 }
 
 .project-card footer a {
