@@ -71,7 +71,7 @@ async def get_all_projects_admin(request: Request, authorization: str = Header(N
 # PROTECTED ROUTE - DELETE - delete the project - GET /projects/{id}/delete
 
 
-@router.get("/{project_id}/delete")
+@router.delete("/{project_id}/delete")
 async def delete_project(request: Request, project_id: int, authorization: str = Header(None)):
 
     if authorization == None:
@@ -90,13 +90,24 @@ async def delete_project(request: Request, project_id: int, authorization: str =
                 context={"request": request, 'flashMessage': "an error occurred"})
 
 # EDIT - get the edit form - GET /projects/{id}/edit
+# PROTECTED ROUTE
 
 
 @router.get("/{project_id}/edit")
-async def edit_project(request: Request, project_id: int):
-    project = modelProject.Project.get_single_project(db, project_id)
-    return views.TemplateResponse(
-        "project/edit.html", context={"request": request, "project": project})
+async def edit_project(request: Request, project_id: int, authorization: str = Header(None)):
+
+    if authorization == None:
+        print("NO AUTH")
+        return RedirectResponse('/login')
+
+    if verify_token(authorization):
+
+        project = modelProject.Project.get_single_project(db, project_id)
+        return views.TemplateResponse(
+            "project/edit.html", context={"request": request, "project": project})
+
+    else:
+        return {"success": False, "message": "not authorized"}
 
 
 # CREATE-FORM ROUTE - GET /projects/create
@@ -112,10 +123,21 @@ async def render_create_form(request: Request):
 async def update_project(
         request: Request,
         project: modelProject.ProjectSchema,
-        project_id: int):
+        project_id: int,
+        authorization: str = Header(None)
+):
+    print(project)
 
-    updated_id = modelProject.Project.update_project(db, project, project_id)
-    return {"success": True, "projectUpdated": updated_id}
+    if authorization is None:
+        return {"success": False, "Error": "Not authorized"}
+
+    if verify_token(authorization):
+        updated_id = modelProject.Project.update_project(
+            db, project, project_id)
+        return {"success": True, "projectUpdated": updated_id}
+
+    else:
+        return {"success": False, "message": "not authorized"}
 
 
 @router.get("/{notFoundPath}")

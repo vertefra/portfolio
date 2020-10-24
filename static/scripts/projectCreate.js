@@ -11,23 +11,6 @@ const projectObj = {
 
 const submitBtn = document.getElementById('submit-created');
 
-const updateState = state => {
-  const cpState = { ...state };
-  for (let key in cpState) {
-    const element = document.getElementById(key);
-    const value = element.value;
-    cpState[key] = value;
-  }
-  return cpState;
-};
-
-const clearForm = state => {
-  for (let key in state) {
-    const input = document.getElementById(key);
-    input.value = '';
-  }
-};
-
 submitBtn.onclick = async ev => {
   // ev.preventDefault();
 

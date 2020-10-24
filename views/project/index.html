@@ -37,13 +37,20 @@
             </footer>
             {% if admin %}
 
-            <a href="/projects/{{ project.id }}/edit">
-                <button class="edit-btn" >edit</button>
-            </a>
-
-            <a href="/projects/{{ project.id }}/delete">
-                <button class="edit-btn" >delete</button>
-            </a>
+            
+            <input 
+                type="button" 
+                class="edit-btn" 
+                name="{{ project.id }}"
+                value="edit"
+            />
+            
+            <input 
+                type="button" 
+                class="delete-btn" 
+                name="{{ project.id }}"
+                value="delete"
+            />
             
             {% endif %}
 
