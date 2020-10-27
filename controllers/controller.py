@@ -19,6 +19,11 @@ async def login(request: Request):
     return views.TemplateResponse("router/login.html", {"request": request})
 
 
+@router.get("/about")
+async def about(request: Request):
+    return views.TemplateResponse("router/about.html", {"request": request})
+
+
 # check the password and send the token
 
 @router.post("/login/")
